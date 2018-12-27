@@ -26,6 +26,7 @@ def main():
     plt.scatter(x, y)
     plt.xlabel('Cluster Number')
     plt.ylabel('Point Number')
+    # plt.savefig('./images/cluster.png')
     plt.show()
     
 if __name__ == '__main__':
