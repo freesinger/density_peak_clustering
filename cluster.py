@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class DensityPeakCluster(object):
-    def locate_center(self, judge, maxid):
+    def locate_center(self, judge, maxid, threshold):
         '''
         :judge: dict with {point: density * dist}
         :rtype: list of cluster centers
@@ -11,13 +11,15 @@ class DensityPeakCluster(object):
         '''
         
         result = sorted(judge.items(), key=lambda k:k[1], reverse=True)
-        """
+        
         x, y = zip(*result)
         plt.scatter(x, y)
         plt.xlabel('Point Number')
-        plt.ylabel('Rank')
-        plt.show()
-        """
+        plt.ylabel(r'$\gamma$')
+        plt.title(r'$d_c=$'+ str(threshold))
+        plt.savefig('./images/rank cutoff.png')
+        # plt.show()
+        plt.close()
         # result showed in rank.png
         # 6 clusters should be divided
 
@@ -37,7 +39,7 @@ class DensityPeakCluster(object):
 
     def classify(self, taginfo, srt_dens, min_num, maxid):
         '''
-        :rtype: classify the points not cluster center
+        :rtype: tag dict with classified points not cluster center
         '''
         dens_dict = dict()
         for ele in srt_dens:

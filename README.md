@@ -11,9 +11,10 @@
 - **data:** Given data from this essay
 - **images:** Generated images for constructing framework
 - **references:** Essays used for this projects
+- **report:** Records and report
 - **data_process.py:** Data processing
 - **cluster.py:** Find cluster center and classify points
-- **setup.py:** Processing data and vitualizing 
+- **setup.py:** Processing data and visualizing
 
 ## 3. Usage
 

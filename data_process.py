@@ -7,6 +7,7 @@ class ProcessData(object):
         '''
         :folder: data file path
         :rtype: dict pair distance
+                MAX id number
         '''
         distance = dict()
         max_pt = 0
@@ -53,9 +54,16 @@ class ProcessData(object):
         for factor in scape:
             value = self.entropy(dist, max_id, factor)
             # print(factor, value)
+            # plt.scatter(factor, value, c='r', s=1)
             if value and value < entro:
                 entro, thresh = value, factor
         thresh = 3 * thresh / pow(2, 0.5)
+        '''
+        plt.xlabel(r'$\sigma$')
+        plt.ylabel(r'H')
+        plt.savefig('./images/Entropy.png')
+        plt.close()
+        '''
         # print('current: ', entro, thresh)
         # current:  7.203577254067677 0.04560838738653229
         return thresh
@@ -115,7 +123,7 @@ class ProcessData(object):
 
     def make_pair(self, srt_dens, min_dist, maxid):
         '''
-        :rtype: pair dict with {point: [desity, min dist]}
+        :rtype: pair dict with {point: [density, min dist]}
                 refer factor dict with {point: density * dist}
         '''
         pair_dict = dict()
@@ -131,3 +139,16 @@ class ProcessData(object):
         else:
             return print('missing %d value', maxid - dens_dict)
         return pair_dict, refer_dict
+    
+    def show_pair_info(self, pair, threshold):
+        show_dict = dict()
+        for p in pair.values():
+            show_dict[p[0]] = p[1]
+        tmp = sorted(show_dict.items())
+        dens, mdis = zip(*tmp)
+        plt.scatter(dens, mdis)
+        plt.xlabel(r'$\rho$')
+        plt.ylabel(r'$\delta$')
+        plt.title(r'$d_c=$' + str(threshold))
+        plt.savefig('./images/Decision Graph Cutoff.png')
+        plt.close()
