@@ -32,7 +32,7 @@
 
 对于任意点$i$，同时具有较大的$\rho_i$和$\delta_i$，则更有可能成为聚类中心，采用Guassian计算局部密度，截断距离$d_c$取`0.311`，根据此规则画出$(\rho_i,\delta_i)$的**决策图**如下：
 
-![Decision Graph](../images/Decision Graph ori.png)
+![Decision Graph ori](../images/Decision Graph ori.png)
 
 文章中提出对$(\rho_i,\delta_i)$，定义$\gamma_i=\rho_i\delta_i$为聚类中心的划分标准，画出图像如下：
 
