@@ -84,7 +84,7 @@ class ProcessData(object):
             
     def Guasse(self, distance, max_id, threshold):
         '''
-        :rtype: dict with Gaussian kernel values by desc
+        :rtype: list with Gaussian kernel values by desc
         '''
         guasse = dict()
         for i in range(1, max_id + 1):
