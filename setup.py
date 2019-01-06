@@ -20,9 +20,10 @@ def main():
     center, tag = clust.locate_center(refer_info, maxid, threshold)
     taginfo = clust.classify(tag, sort_dst, min_num, maxid)
     print('Clustering done!')
-    # print(taginfo)
-    # gauss = solution.Guasse(dist, maxid, threshold)
-
+    
+    # show each cluster results
+    clust.analysis(center, taginfo, dist, maxid)
+    
     # show cluster distribution info
     temp = sorted(taginfo.items(), key=lambda k:k[1])
     y, x = zip(*temp)

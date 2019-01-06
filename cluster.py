@@ -48,3 +48,28 @@ class DensityPeakCluster(object):
             if taginfo[i] == -1:
                 taginfo[i] = taginfo[min_num[i]]
         return taginfo
+
+    def analysis(self, centers, taginfo, distance, maxid):
+        '''
+        :rtype: plot cluster information
+        '''
+        num_centers = len(centers)
+        tmp = sorted(taginfo.items(), key=lambda k:k[1])
+        dvid_numbers = list()
+        for i in range(1, num_centers + 1):
+            cluster_i = list()
+            for pair in tmp:
+                if pair[1] == i:
+                    cluster_i.append(pair[0])
+            dvid_numbers.append(cluster_i)
+        
+        for i in range(1, num_centers + 1):
+            cur_set = dvid_numbers[i - 1]
+            d = list(distance[(j, i)] for j in cur_set)
+            plt.stackplot(cur_set, d)
+            plt.xlabel('Point Number')
+            plt.ylabel('Distance to Center')
+            plt.title('Cluster No.{}'.format(i))
+            plt.savefig('./images/Cluster{}'.format(i))
+            plt.close()
+            

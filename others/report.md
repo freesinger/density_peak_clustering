@@ -50,9 +50,7 @@
 
 #### 2.2.2 Entropy
 
-对一个POP集$\{\varphi_1,\varphi_2,...,\varphi_n\}$，定义数据域的熵值$H=-\Sigma_{i=1}^n(\frac{\varphi_i}{Z})log(\frac{\varphi_i}{Z})$，熵值代表数据域的混乱度，我们需要求使得$H$最小的变量$\sigma$。
-
-下图直观展示了$H$随$\sigma$的变化趋势：
+对一个POP集$\{\varphi_1,\varphi_2,...,\varphi_n\}$，定义数据域的熵值$H=-\Sigma_{i=1}^n(\frac{\varphi_i}{Z})log(\frac{\varphi_i}{Z})$，熵值代表数据域的混乱度，我们需要求使得$H$最小的变量$\sigma$。 下图直观展示了$H$随$\sigma$的变化趋势：
 
 ![entropy](../images/entropy.png)
 
@@ -113,6 +111,12 @@ def classify(self, taginfo, srt_dens, min_num, maxid):
 - Gaussian kernel聚类如下：
 
 ![cluster_gausse](../images/cluster_gausse.png)
+
+#### 2.3.2 聚类效果
+
+![Cluster6](../images/Cluster6.png)
+
+由之前的实验结果可知聚类中心共6个，简单对六个簇的分类情况进行的可视化，横坐标为点标号，纵坐标为点到聚类中心的距离。由于点的个数较多，故采用面积图，如上图所示是第六个簇的效果图。
 
 ## 3. 总结
 
