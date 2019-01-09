@@ -58,12 +58,12 @@ class ProcessData(object):
             if value and value < entro:
                 entro, thresh = value, factor
         thresh = 3 * thresh / pow(2, 0.5)
-        '''
+        """
         plt.xlabel(r'$\sigma$')
         plt.ylabel(r'H')
         plt.savefig('./images/Entropy.png')
         plt.close()
-        '''
+        """
         # print('current: ', entro, thresh)
         # current:  7.203577254067677 0.04560838738653229
         return thresh
@@ -150,5 +150,5 @@ class ProcessData(object):
         plt.xlabel(r'$\rho$')
         plt.ylabel(r'$\delta$')
         plt.title(r'$d_c=$' + str(threshold))
-        plt.savefig('./images/Decision Graph Cutoff.png')
+        plt.savefig('./images/Decision Graph Cutoff test.png')
         plt.close()

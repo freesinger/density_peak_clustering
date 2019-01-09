@@ -17,18 +17,19 @@ class DensityPeakCluster(object):
         plt.xlabel('Point Number')
         plt.ylabel(r'$\gamma$')
         plt.title(r'$d_c=$'+ str(threshold))
-        plt.savefig('./images/rank cutoff.png')
+        plt.savefig('./images/rank cutoff test.png')
         # plt.show()
         plt.close()
         # result showed in rank.png
-        # 6 clusters should be divided
+        # 6 clusters should be divided in given dataset
 
-        cluster_centers = list(c[0] for c in result[0:6])
-        # [1061, 1515, 400, 6, 1566, 614]
+        cluster_centers = list(c[0] for c in result[0:5])
+        # given dataset: [1061, 1515, 400, 6, 1566, 614]
+        # generate dataset: [80, 460, 463, 500, 954, 984]
 
         tag_info = dict()
         cluster_id = 1
-        for i in range(1, maxid + 1):
+        for i in range(maxid + 1):
             if i in cluster_centers:
                 tag_info[i] = cluster_id
                 cluster_id += 1
@@ -42,6 +43,7 @@ class DensityPeakCluster(object):
         :rtype: tag dict with classified points not cluster center
         '''
         dens_dict = dict()
+        # taginfo[0] = 2
         for ele in srt_dens:
             dens_dict[ele[0]] = ele[1]
         for i in dens_dict.keys():
@@ -69,7 +71,7 @@ class DensityPeakCluster(object):
             plt.stackplot(cur_set, d)
             plt.xlabel('Point Number')
             plt.ylabel('Distance to Center')
-            plt.title('Cluster No.{}'.format(i))
-            plt.savefig('./images/Cluster{}'.format(i))
+            plt.title('Cluster No.{} test'.format(i))
+            plt.savefig('./images/Cluster{} test'.format(i))
             plt.close()
             
