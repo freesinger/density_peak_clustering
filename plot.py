@@ -9,7 +9,9 @@ COOR_DATA = './data/generatePoints.txt'
 def main():
     solution = data_process.ProcessData()
     dist, maxid = solution.data_process(TEST_DATA)
-    threshold = solution.threshold(dist, maxid)
+    # 通用数据使用以下一行求截断距离（耗时较长）
+    # threshold = solution.threshold(dist, maxid)
+    threshold = 0.7828967189629044
     sort_dst = solution.CutOff(dist, maxid, threshold)
     # sort_dst = solution.Guasse(dist, maxid, threshold)
     min_dist, min_num = solution.min_distance(dist, sort_dst, maxid)
@@ -37,35 +39,35 @@ def main():
             p, x, y = int(p), float(x), float(y)
             coords[p] = [x, y]
     # print(coords[center[0]])
-    for i in range(len(center) - 1):
+    for i in range(len(center)):
         c = coords[center[i]]
         plt.plot(c[0], c[1], 'ok', markersize=5, alpha=0.8)
     
-    color = {0:'k', 1:'b', 2:'g', 3:'r', 4:'c', 5:'m', 6:'y'}
+    color = {0:'r', 1:'b', 2:'g', 3:'k', 4:'c', 5:'m', 6:'y'}
     for p in temp:
         for i in range(len(center)):
+            c = coords[p[0]]
             try:
-                c = coords[p[0]]
-                if p[1] == i:
+                # 标号从1开始，故i+1
+                if p[1] == i + 1:
                     plt.scatter(c[0], c[1], c=color[i], alpha=0.6, s=1)
             except KeyError:
-                continue
-                # plt.scatter(c[0], c[1], c=color[i], alpha=0.6, s=1)
+                raise 'Key map not exis!'
+
     plt.xlabel('x')
     plt.ylabel('y')
     plt.title('Plot Result')
     plt.savefig('./images/result.png')
-    plt.show()
+    # plt.show()
+    plt.close()
 
-    """
     y, x = zip(*temp)
     plt.scatter(x, y)
     plt.xlabel('Cluster Number')
     plt.ylabel('Point Number')
     plt.title(r'$d_c=$' + str(threshold))
     plt.savefig('./images/cluster_cutoff_test.png')
-    plt.show()
-    """
+    # plt.show()
     
 if __name__ == '__main__':
     main()

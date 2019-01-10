@@ -23,9 +23,9 @@ class DensityPeakCluster(object):
         # result showed in rank.png
         # 6 clusters should be divided in given dataset
 
-        cluster_centers = list(c[0] for c in result[0:5])
+        cluster_centers = list(c[0] for c in result[0:3])
         # given dataset: [1061, 1515, 400, 6, 1566, 614]
-        # generate dataset: [80, 460, 463, 500, 954, 984]
+        # generate dataset: [642, 877, 123]
 
         tag_info = dict()
         cluster_id = 1
@@ -47,8 +47,12 @@ class DensityPeakCluster(object):
         for ele in srt_dens:
             dens_dict[ele[0]] = ele[1]
         for i in dens_dict.keys():
-            if taginfo[i] == -1:
-                taginfo[i] = taginfo[min_num[i]]
+            try:
+                if taginfo[i] == -1:
+                    taginfo[i] = taginfo[min_num[i]]
+            except KeyError:
+                raise 'Key error: key does not exist!'
+
         return taginfo
 
     def analysis(self, centers, taginfo, distance, maxid):

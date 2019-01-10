@@ -14,11 +14,11 @@
 
 - **Cut-off Kernel**
 
-给定截断距离$d_{c} > 0$，采用Cut-off kernel方式计算局部密度，由$\rho_{i}=\Sigma_{j}\chi(d_{ij}-d_{c})$且$\chi(x) = 1\text{ if } x<0\text{ and }\chi(x)=0\text{ otherwise}$，这种方式计算局部密度$\rho_i$为连续值。
+给定截断距离$d_{c} > 0$，采用Cut-off kernel方式计算局部密度，由$\rho_{i}=\large\Sigma_{j}\chi(d_{ij}-d_{c})$且$\chi(x) = 1\text{ if } x<0\text{ and }\chi(x)=0\text{ otherwise}$，这种方式计算局部密度$\rho_i$为连续值。
 
 - **Gaussian kernel**
 
-给定截断距离$d_{c} > 0$，采用Gaussian kernel方式计算局部密度，由$\rho_{i}=\Sigma_{j}e^-(\frac{d_{ij}}{d_{c}})^2$且$\chi(x) = 1\text{ if } x<0\text{ and }\chi(x)=0\text{ otherwise}$，这种方式计算局部密度$\rho_i$为离散值。
+给定截断距离$d_{c} > 0$，采用Gaussian kernel方式计算局部密度，由$\rho_{i}=\large\Sigma_{j}e^-(\frac{d_{ij}}{d_{c}})^2$且$\chi(x) = 1\text{ if } x<0\text{ and }\chi(x)=0\text{ otherwise}$，这种方式计算局部密度$\rho_i$为离散值。
 
 #### 2.1.2 最小距离$\delta_i$
 
@@ -46,11 +46,11 @@
 
 #### 2.2.1 Potential Of Point(POP)
 
-对一个数据集$\{x_1,x_2,...,x_n\}$，每个点的potential计算公式为$\varphi(x)=\Sigma_{i=1}^n\big(e^-(\frac{||x-x_i||}{\sigma})^2\big)$，类似Gaussian kernel的计算，其中$||x-x_i||$代表欧式几何空间的$x$与$x_i$的距离，$\sigma$为需要确定的变量值。
+对一个数据集$\{x_1,x_2,...,x_n\}$，每个点的potential计算公式为$\varphi(x)=\large\Sigma_{i=1}^n\big(e^-(\frac{||x-x_i||}{\sigma})^2\big)$，类似Gaussian kernel的计算，其中$||x-x_i||$代表欧式几何空间的$x$与$x_i$的距离，$\sigma$为需要确定的变量值。
 
 #### 2.2.2 Entropy
 
-对一个POP集$\{\varphi_1,\varphi_2,...,\varphi_n\}$，定义数据域的熵值$H=-\Sigma_{i=1}^n(\frac{\varphi_i}{Z})log(\frac{\varphi_i}{Z})$，熵值代表数据域的混乱度，我们需要求使得$H$最小的变量$\sigma$。 下图直观展示了$H$随$\sigma$的变化趋势：
+对一个POP集$\{\varphi_1,\varphi_2,...,\varphi_n\}$，定义数据域的熵值$H=-\large\Sigma_{i=1}^n(\frac{\varphi_i}{Z})log(\frac{\varphi_i}{Z})$，熵值代表数据域的混乱度，我们需要求使得$H$最小的变量$\sigma$。 下图直观展示了$H$随$\sigma$的变化趋势：
 
 ![entropy](../images/entropy.png)
 
@@ -118,9 +118,53 @@ def classify(self, taginfo, srt_dens, min_num, maxid):
 
 由之前的实验结果可知聚类中心共6个，简单对六个簇的分类情况进行的可视化，横坐标为点标号，纵坐标为点到聚类中心的距离。由于点的个数较多，故采用面积图，如上图所示是第六个簇的效果图。
 
+### 2.4 聚类测试
+
+#### 2.4.1 测试数据
+
+编写`generatePoints.py`来生成三个簇，每个簇400个点且均服从高斯分布，分布图如下所示。
+
+![generatedPoints](../images/generatedPoints.png)
+
+#### 2.4.2 聚类效果
+
+通过求熵值来确定截断距离最佳取值的图如下：
+
+![Entropy test](../images/Entropy test.png)
+
+由画出决策图如下：
+
+![Decision Graph Cutoff test](../images/Decision Graph Cutoff test.png)
+
+定义$\gamma_i=\rho_i\delta_i$为聚类中心的划分标准，画出图像如下：
+
+![rank cutoff test](../images/rank cutoff test.png)
+
+截断距离选择`0.7828`为最佳值，由图能直观看出此时应该划分三个类，和生成三个簇的数据基本相符。
+
+对三个簇进行可视化，画出相应的结果如下图，黑色加粗点为聚类中心：
+
+![result](../images/result.png)
+
+#### 2.4.3 结果分析
+
+聚类结果与生成图对比发现有的边缘点被忽略了，生成每个聚类簇元素视图如下：
+
+![cluster_cutoff_test](../images/cluster_cutoff_test.png)
+
+1. 可见有一部分点被分到第-1个簇中，这是在非聚类中心点分类过程中一些距离三个聚类中心都很远的离群点，因此在可视化过程中由聚类中心生成对应的簇时，这些点会被忽略，从而导致聚类结果图中点的缺失。
+
+   **对这些离群点进行有效的信息处理和聚类划分，可以是对该算法优化的下一步工作。**
+
+2. 对一些交错点划分，可见该算法性能较为朴素，在处理维度过高或者密度过大的点时可能任意出现交错点的错误划分。
+
+   **对交错点进行有效的处理可以有效解决这个问题，同时可以提升该算法的健壮性。**
+
 ## 3. 总结
 
-由于对距离定义未知，所以没有进行六类cluster的plot。文章中提到的聚类算法其实只实现了聚类中心的选择，在这基础上阅读了文章的增补内容，进行了聚类过程算法的补全，同时对截断距离的选取进行优化。在这基础之上还可以对聚类边界进行讨论，对离群点和交叉点进行划分。
+由于对距离定义未知，所以没有对初始数据进行六类cluster的plot，只在测试数据集上进行了相关的聚类可视化处理。文章中提到的聚类算法其实只实现了聚类中心的选择，在这基础上阅读了文章的增补内容，进行了聚类过程算法的补全，同时对截断距离的选取进行优化。
+
+在这基础之上还可以对聚类边界进行讨论，对离群点和交叉点进行划分。
 
 对聚类算法的聚类中心选择一直是个研究热点，该算法很朴素但切中要点，能很好地解决聚类中心问题，但是在聚类中心个数的选择上和k-means算法一样，还是需要人为选择，联系对局部密度算法的优化，猜测是否可以对每个点进行熵值计算，寻找聚类中心熵值的特性，从而实现聚类中心个数的自动选择。 
 

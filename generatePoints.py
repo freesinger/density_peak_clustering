@@ -7,9 +7,9 @@ GENERATE_POINTS = './data/generatePoints.txt'
 r = np.random.RandomState(24)
 p = r.randn(400, 2)
 q = r.randn(400, 2) + 7
-r = r.randn(400, 2) + 4
+s = r.randn(400, 2) + 4
 
-t = np.concatenate((p, q, r), axis=0)
+t = np.concatenate((p, q, s), axis=0)
 
 with open(GENERATE_POINTS, 'w', encoding='utf-8') as f:
     for pos in range(len(t)):
@@ -18,7 +18,7 @@ with open(GENERATE_POINTS, 'w', encoding='utf-8') as f:
 
 d = lambda x, y: np.sqrt(np.power((x[0] - y[0]), 2) + np.power((x[1] - y[1]), 2))
 
-with open(GENERATE_POINTS_DIST, 'a', encoding='utf-8') as f:
+with open(GENERATE_POINTS_DIST, 'w', encoding='utf-8') as f:
     for i in range(len(t)):
         for j in range(i + 1, len(t)):
             distance = d(t[i], t[j])
@@ -29,8 +29,8 @@ y = p[:, 1]
 plt.plot(x, y, 'or', markersize=1, alpha=0.5, label='1')
 # plt.show()
 
-x = r[:, 0]
-y = r[:, 1]
+x = s[:, 0]
+y = s[:, 1]
 plt.plot(x, y, 'ob', markersize=1, alpha=0.5, label='2')
 
 x = q[:, 0]

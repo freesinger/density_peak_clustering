@@ -1,4 +1,3 @@
-import math
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -33,13 +32,13 @@ class ProcessData(object):
         for i in range(1, maxid + 1):
             tmp = 0
             for j in range(1, maxid + 1):
-                tmp += math.exp(-pow(distance[(i, j)] / factor, 2))
+                tmp += np.exp(-pow(distance[(i, j)] / factor, 2))
             potential[i] = tmp
         z = sum(potential.values())
         H = 0
         for i in range(1, maxid + 1):
             x = potential[i] / z
-            H += x * math.log(x)
+            H += x * np.log(x)
         return -H
 
     def threshold(self, dist, max_id):
@@ -47,25 +46,37 @@ class ProcessData(object):
         :rtype: factor value makes H smallest
         '''
         entro = 10.0
+        # given data:
         # 0.02139999999999999 7.203581306901208
         # 0.02149999999999999 7.203577254067677
         # 0.02159999999999999 7.203577734107922
-        scape = np.arange(0.021+1e-4, 0.022, 1e-4)
+
+        # generate data:
+        # 0.367020, 6.943842
+        # 0.368959, 6.943840
+        # 0.370898, 6.943841
+        
+        scape = np.linspace(0.330, 0.430, 50)
+        # 通用数据使用以下一行
+        # scape = np.linspace(0.001, 1.001, 100)
         for factor in scape:
             value = self.entropy(dist, max_id, factor)
-            # print(factor, value)
+            print('factor: {0:.6f}, entropy: {1:.8f}'.format(factor, value))
             # plt.scatter(factor, value, c='r', s=1)
             if value and value < entro:
                 entro, thresh = value, factor
         thresh = 3 * thresh / pow(2, 0.5)
+        
         """
         plt.xlabel(r'$\sigma$')
         plt.ylabel(r'H')
-        plt.savefig('./images/Entropy.png')
+        plt.savefig('./images/Entropy test.png')
         plt.close()
         """
-        # print('current: ', entro, thresh)
-        # current:  7.203577254067677 0.04560838738653229
+
+        print('current: ', entro, thresh)
+        # given data:  7.203577254067677 0.04560838738653229
+        # generate data: 6.943840312796875 0.7828967189629044
         return thresh
     
     def CutOff(self, distance, max_id, threshold):
@@ -90,7 +101,7 @@ class ProcessData(object):
         for i in range(1, max_id + 1):
             tmp = 0
             for j in range(1, max_id + 1):
-                tmp += math.exp(-pow((distance[(i, j)] / threshold), 2))
+                tmp += np.exp(-pow((distance[(i, j)] / threshold), 2))
             guasse[i] = tmp
         sorted_guasse = sorted(guasse.items(), key=lambda k:k[1], reverse=True)
         return sorted_guasse
