@@ -26,17 +26,17 @@ with open(GENERATE_POINTS_DIST, 'w', encoding='utf-8') as f:
 
 x = p[:, 0]
 y = p[:, 1]
-plt.plot(x, y, 'or', markersize=1, alpha=0.5, label='1')
+plt.plot(x, y, 'ok', markersize=1, alpha=0.5)
 # plt.show()
 
 x = s[:, 0]
 y = s[:, 1]
-plt.plot(x, y, 'ob', markersize=1, alpha=0.5, label='2')
+plt.plot(x, y, 'ok', markersize=1, alpha=0.5)
 
 x = q[:, 0]
 y = q[:, 1]
-plt.plot(x, y, 'oc', markersize=1, alpha=0.5, label='3')
-plt.legend()
+plt.plot(x, y, 'ok', markersize=1, alpha=0.5)
+# plt.legend()
 # plt.axis([-3, 10, -3, 9])
 plt.xlabel('x')
 plt.ylabel('y')

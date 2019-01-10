@@ -26,10 +26,16 @@
 
 - See the performance on generate dataset:
 
-
 `>_ python3.6 generatePoints.py`
-
 
 `>_ python3.6 plot.py`
 
+## 4. Performances
 
+- Dataset to be clustering:
+
+![generatedPoints](images/generatedPoints.png)
+
+- After clustering:
+
+![result](images/result.png)
