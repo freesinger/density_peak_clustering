@@ -122,9 +122,13 @@ def classify(self, taginfo, srt_dens, min_num, maxid):
 
 #### 2.4.1 测试数据
 
-编写`generatePoints.py`来生成三个簇，每个簇400个点且均服从高斯分布，分布图如下所示。
+编写`generatePoints.py`来生成六个簇，每个簇400个点且均服从高斯分布，分布图如下所示。
 
 ![generatedPoints](../images/generatedPoints.png)
+
+添加颜色及label如下图所示：
+
+![generatedColoredPoints](../images/generatedColoredPoints.png)
 
 #### 2.4.2 聚类效果
 
@@ -140,9 +144,9 @@ def classify(self, taginfo, srt_dens, min_num, maxid):
 
 ![rank cutoff test](../images/rank cutoff test.png)
 
-截断距离选择`0.7828`为最佳值，由图能直观看出此时应该划分三个类，和生成三个簇的数据基本相符。
+截断距离选择`0.7828`为最佳值，由图能直观看出此时应该划分六个类，和生成六个簇的数据基本相符。
 
-对三个簇进行可视化，画出相应的结果如下图，黑色加粗点为聚类中心：
+对六个簇进行可视化，画出相应的结果如下图，黑色加粗点为聚类中心：
 
 ![result](../images/result.png)
 
@@ -152,7 +156,7 @@ def classify(self, taginfo, srt_dens, min_num, maxid):
 
 ![cluster_cutoff_test](../images/cluster_cutoff_test.png)
 
-1. 可见有一部分点被分到第-1个簇中，这是在非聚类中心点分类过程中一些距离三个聚类中心都很远的离群点，因此在可视化过程中由聚类中心生成对应的簇时，这些点会被忽略，从而导致聚类结果图中点的缺失。
+1. 可见有一部分点被分到第-1个簇中，这是在非聚类中心点分类过程中一些距离所有聚类中心都很远的离群点，因此在可视化过程中由聚类中心生成对应的簇时，这些点会被忽略，从而导致聚类结果图中点的缺失。
 
    **对这些离群点进行有效的信息处理和聚类划分，可以是对该算法优化的下一步工作。**
 

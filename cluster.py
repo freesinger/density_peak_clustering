@@ -23,7 +23,7 @@ class DensityPeakCluster(object):
         # result showed in rank.png
         # 6 clusters should be divided in given dataset
 
-        cluster_centers = list(c[0] for c in result[0:3])
+        cluster_centers = list(c[0] for c in result[0:6])
         # given dataset: [1061, 1515, 400, 6, 1566, 614]
         # generate dataset: [642, 877, 123]
 

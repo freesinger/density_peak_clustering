@@ -23,7 +23,7 @@ def main():
     center, tag = clust.locate_center(refer_info, maxid, threshold)
     taginfo = clust.classify(tag, sort_dst, min_num, maxid)
     print('Clustering done!')
-    print(center)   # [80, 460, 463]
+    print(center)   # [978, 1842, 1522, 438, 2077, 123]
 
     # show each cluster results
     clust.analysis(center, taginfo, dist, maxid)
@@ -48,7 +48,7 @@ def main():
         for i in range(len(center)):
             c = coords[p[0]]
             try:
-                # 标号从1开始，故i+1
+                # 标号从1开始，故i + 1
                 if p[1] == i + 1:
                     plt.scatter(c[0], c[1], c=color[i], alpha=0.6, s=1)
             except KeyError:

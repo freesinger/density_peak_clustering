@@ -8,7 +8,8 @@ GIVEN_DATA = './data/example_distances.dat'
 def main():
     solution = data_process.ProcessData()
     dist, maxid = solution.data_process(GIVEN_DATA)
-    threshold = solution.threshold(dist, maxid)
+    # threshold = solution.threshold(dist, maxid)
+    threshold = 0.0456
     sort_dst = solution.CutOff(dist, maxid, threshold)
     # sort_dst = solution.Guasse(dist, maxid, threshold)
     min_dist, min_num = solution.min_distance(dist, sort_dst, maxid)
