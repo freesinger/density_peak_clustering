@@ -4,7 +4,7 @@
 
 **Python:**  `3.6.7`
 
-**Lib:**  `math, numpy, matplotlib`
+**Lib:**  `numpy, matplotlib`
 
 ## 2. Files
 
