@@ -39,3 +39,6 @@
 - After clustering:
 
 ![result](images/result.png)
+
+## 5. License
+MIT
