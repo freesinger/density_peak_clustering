@@ -20,11 +20,11 @@
 
 ## 3. Usage
 
-- See the performance on given dataset:
+- Show the performance on given dataset:
 
 `>_ python3.6 setup.py`
 
-- See the performance on generate dataset:
+- Show the performance on generate dataset:
 
 `>_ python3.6 generatePoints.py`
 
