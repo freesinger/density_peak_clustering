@@ -1,4 +1,7 @@
-# Density Peak Clustering [![Licence](https://img.shields.io/github/license/freesinger/Density_Peak_Cluster.svg?style=flat)](https://github.com/freesinger/Density_Peak_Cluster/blob/master/LICENSE)
+# Density Peak Clustering 
+![top_language](https://img.shields.io/github/languages/top/freesinger/Density_Peak_Cluster.svg?colorB=blue&logo=top_language&style=flat)
+![release](https://img.shields.io/github/release/freesinger/Density_Peak_Cluster.svg?colorB=orange&style=flat)
+[![Licence](https://img.shields.io/github/license/freesinger/Density_Peak_Cluster.svg?style=flat)](https://github.com/freesinger/Density_Peak_Cluster/blob/master/LICENSE)
 
 ## 1. Dependencies
 
