@@ -1,4 +1,4 @@
-# Density Peak Clustering
+# Density Peak Clustering ![](https://img.shields.io/github/license/freesinger/Density_Peak_Cluster.svg?style=flat)
 
 ## 1. Dependencies
 
@@ -39,6 +39,3 @@
 - After clustering:
 
 ![result](images/result.png)
-
-## 5. License
-MIT
