@@ -1,4 +1,5 @@
 # Density Peak Clustering 
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 ![check](https://img.shields.io/github/status/s/pulls/freesinger/Density_Peak_Cluster/3.svg?style=flat)
 ![top_language](https://img.shields.io/github/languages/top/freesinger/Density_Peak_Cluster.svg?colorB=blue&logo=top_language&style=flat)
 ![release](https://img.shields.io/github/release/freesinger/Density_Peak_Cluster.svg?colorB=orange&style=flat)
