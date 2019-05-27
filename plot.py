@@ -52,7 +52,7 @@ def main():
                 if p[1] == i + 1:
                     plt.scatter(c[0], c[1], c=color[i], alpha=0.6, s=1)
             except KeyError:
-                raise 'Key map not exis!'
+                raise 'Key map does not exist!'
 
     plt.xlabel('x')
     plt.ylabel('y')
