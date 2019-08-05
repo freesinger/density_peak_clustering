@@ -4,7 +4,6 @@
 ![top_language](https://img.shields.io/github/languages/top/freesinger/Density_Peak_Cluster.svg?colorB=blue&logo=top_language&style=flat)
 ![release](https://img.shields.io/github/release/freesinger/Density_Peak_Cluster.svg?colorB=orange&style=flat)
 ![size](https://img.shields.io/github/repo-size/freesinger/Density_Peak_Cluster.svg?colorB=red&style=flat)
-[![Licence](https://img.shields.io/github/license/freesinger/Density_Peak_Cluster.svg?style=flat)](https://github.com/freesinger/Density_Peak_Cluster/blob/master/LICENSE)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffreesinger%2Fdensity_peak_clustering.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffreesinger%2Fdensity_peak_clustering?ref=badge_shield)
 
 ## 1. Dependencies
