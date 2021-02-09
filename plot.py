@@ -10,8 +10,8 @@ def main():
     solution = data_process.ProcessData()
     dist, maxid = solution.data_process(TEST_DATA)
     # 通用数据使用以下一行求截断距离（耗时较长）
-    # threshold = solution.threshold(dist, maxid)
-    threshold = 0.7828967189629044
+    threshold = solution.threshold(dist, maxid)
+    # threshold = 0.7828967189629044
     sort_dst = solution.CutOff(dist, maxid, threshold)
     # sort_dst = solution.Guasse(dist, maxid, threshold)
     min_dist, min_num = solution.min_distance(dist, sort_dst, maxid)
