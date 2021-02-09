@@ -56,9 +56,9 @@ class ProcessData(object):
         # 0.368959, 6.943840
         # 0.370898, 6.943841
         
-        scape = np.linspace(0.330, 0.430, 50)
+        # scape = np.linspace(0.330, 0.430, 50)
         # 通用数据使用以下一行
-        # scape = np.linspace(0.001, 1.001, 100)
+        scape = np.linspace(0.001, 1.001, 100)
         for factor in scape:
             value = self.entropy(dist, max_id, factor)
             print('factor: {0:.6f}, entropy: {1:.8f}'.format(factor, value))
