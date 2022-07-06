@@ -51,7 +51,7 @@ class DensityPeakCluster(object):
                 if taginfo[i] == -1:
                     taginfo[i] = taginfo[min_num[i]]
             except KeyError:
-                raise 'Key error: key does not exist!'
+                raise KeyError('Key error: key does not exist!')
 
         return taginfo
 
